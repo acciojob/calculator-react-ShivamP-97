@@ -25,7 +25,7 @@ function Calculator() {
   };
 
   return (
-    <div className="Calculator">
+    <div id="calci" className="Calculator">
       <div className="display">{value || "0"}</div>
 
       <button id="btn-clear" onClick={clearAll}>C</button>
