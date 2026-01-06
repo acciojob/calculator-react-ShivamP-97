@@ -11,12 +11,8 @@ function Calculator() {
 
   const calculate = () => {
     try {
-      const result = eval(value);
-      if (result === Infinity || isNaN(result)) {
-        setValue("Error");
-      } else {
-        setValue(result.toString());
-      }
+      const result = eval(value); 
+      setValue(result === Infinity || isNaN(result) ? "Error" : result.toString());
     } catch {
       setValue("Error");
     }
@@ -24,10 +20,10 @@ function Calculator() {
 
   return (
     <div id="calci" className="Calculator">
-      {/* Display */}
-      <div className="display">{value || "0"}</div>
+      {/* Display - shows only value */}
+      <div className="display" id="display">{value || "0"}</div>
 
-      {/* Buttons container */}
+      {/* Buttons */}
       <div className="buttons">
         <button id="btn-clear" onClick={clearAll}>C</button>
 
