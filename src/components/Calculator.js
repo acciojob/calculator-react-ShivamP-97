@@ -33,7 +33,7 @@ function Calculator() {
       <button id="btn-7" onClick={() => appendValue("7")}>7</button>
       <button id="btn-8" onClick={() => appendValue("8")}>8</button>
       <button id="btn-9" onClick={() => appendValue("9")}>9</button>
-      <button id="btn-divide" onClick={() => appendValue("/")}>/</button>
+      <button id="btn-div" onClick={() => appendValue("/")}>/</button>
 
       <button id="btn-4" onClick={() => appendValue("4")}>4</button>
       <button id="btn-5" onClick={() => appendValue("5")}>5</button>
@@ -43,10 +43,10 @@ function Calculator() {
       <button id="btn-1" onClick={() => appendValue("1")}>1</button>
       <button id="btn-2" onClick={() => appendValue("2")}>2</button>
       <button id="btn-3" onClick={() => appendValue("3")}>3</button>
-      <button id="btn-minus" onClick={() => appendValue("-")}>-</button>
+      <button id="btn--" onClick={() => appendValue("-")}>-</button>
 
       <button id="btn-0" onClick={() => appendValue("0")}>0</button>
-      <button id="btn-plus" onClick={() => appendValue("+")}>+</button>
+      <button id="plus" onClick={() => appendValue("+")}>+</button>
       <button id="btn-equals" onClick={calculate}>=</button>
     </div>
   );
