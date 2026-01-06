@@ -3,49 +3,51 @@ import React, { useState } from "react";
 function Calculator() {
   const [value, setValue] = useState("");
 
-  const handleClick = (input) => {
-    setValue((prev) => prev + input);
+  const appendValue = (val) => {
+    setValue((prev) => prev + val);
   };
 
-  const handleClear = () => {
+  const clearAll = () => {
     setValue("");
   };
 
-  const handleEqual = () => {
+  const calculate = () => {
     try {
       const result = eval(value);
-      setValue(result.toString());
-    } catch (error) {
-      setValue("");
+      if (result === Infinity || isNaN(result)) {
+        setValue("Error");
+      } else {
+        setValue(result.toString());
+      }
+    } catch {
+      setValue("Error");
     }
   };
 
   return (
-    <div className="calculator">
+    <div className="Calculator">
       <div className="display">{value || "0"}</div>
 
-      <div className="buttons">
-        <button onClick={handleClear}>C</button>
-        <button onClick={() => handleClick("/")}>/</button>
-        <button onClick={() => handleClick("*")}>*</button>
-        <button onClick={() => handleClick("-")}>-</button>
+      <button id="btn-clear" onClick={clearAll}>C</button>
 
-        <button onClick={() => handleClick("7")}>7</button>
-        <button onClick={() => handleClick("8")}>8</button>
-        <button onClick={() => handleClick("9")}>9</button>
-        <button onClick={() => handleClick("+")}>+</button>
+      <button id="btn-7" onClick={() => appendValue("7")}>7</button>
+      <button id="btn-8" onClick={() => appendValue("8")}>8</button>
+      <button id="btn-9" onClick={() => appendValue("9")}>9</button>
+      <button id="btn-divide" onClick={() => appendValue("/")}>/</button>
 
-        <button onClick={() => handleClick("4")}>4</button>
-        <button onClick={() => handleClick("5")}>5</button>
-        <button onClick={() => handleClick("6")}>6</button>
+      <button id="btn-4" onClick={() => appendValue("4")}>4</button>
+      <button id="btn-5" onClick={() => appendValue("5")}>5</button>
+      <button id="btn-6" onClick={() => appendValue("6")}>6</button>
+      <button id="btn-multiply" onClick={() => appendValue("*")}>*</button>
 
-        <button onClick={() => handleClick("1")}>1</button>
-        <button onClick={() => handleClick("2")}>2</button>
-        <button onClick={() => handleClick("3")}>3</button>
+      <button id="btn-1" onClick={() => appendValue("1")}>1</button>
+      <button id="btn-2" onClick={() => appendValue("2")}>2</button>
+      <button id="btn-3" onClick={() => appendValue("3")}>3</button>
+      <button id="btn-minus" onClick={() => appendValue("-")}>-</button>
 
-        <button onClick={handleEqual}>=</button>
-        <button onClick={() => handleClick("0")}>0</button>
-      </div>
+      <button id="btn-0" onClick={() => appendValue("0")}>0</button>
+      <button id="btn-plus" onClick={() => appendValue("+")}>+</button>
+      <button id="btn-equals" onClick={calculate}>=</button>
     </div>
   );
 }
