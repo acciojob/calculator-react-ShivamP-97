@@ -47,7 +47,7 @@ function Calculator() {
 
       <button id="btn-0" onClick={() => appendValue("0")}>0</button>
       <button id="plus" onClick={() => appendValue("+")}>+</button>
-      <button id="btn-equals" onClick={calculate}>=</button>
+      <button id="equal" onClick={calculate}>=</button>
     </div>
   );
 }
