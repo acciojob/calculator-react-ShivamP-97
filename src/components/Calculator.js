@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function Calculator() {
   const [value, setValue] = useState("");
 
   const handleClick = (input) => {
-    setValue(value + input);
+    setValue((prev) => prev + input);
   };
 
   const handleClear = () => {
@@ -13,9 +13,10 @@ function Calculator() {
 
   const handleEqual = () => {
     try {
-      setValue(eval(value).toString());
-    } catch {
-      setValue("Error");
+      const result = eval(value);
+      setValue(result.toString());
+    } catch (error) {
+      setValue("");
     }
   };
 
@@ -32,7 +33,7 @@ function Calculator() {
         <button onClick={() => handleClick("7")}>7</button>
         <button onClick={() => handleClick("8")}>8</button>
         <button onClick={() => handleClick("9")}>9</button>
-        <button className="operator" onClick={() => handleClick("+")}>+</button>
+        <button onClick={() => handleClick("+")}>+</button>
 
         <button onClick={() => handleClick("4")}>4</button>
         <button onClick={() => handleClick("5")}>5</button>
@@ -41,10 +42,9 @@ function Calculator() {
         <button onClick={() => handleClick("1")}>1</button>
         <button onClick={() => handleClick("2")}>2</button>
         <button onClick={() => handleClick("3")}>3</button>
-        <button className="equals" onClick={handleEqual}>=</button>
 
-        <button className="zero" onClick={() => handleClick("0")}>0</button>
-        <button onClick={() => handleClick(".")}>.</button>
+        <button onClick={handleEqual}>=</button>
+        <button onClick={() => handleClick("0")}>0</button>
       </div>
     </div>
   );
